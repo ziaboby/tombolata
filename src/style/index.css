@@ -1,0 +1,75 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #fafafa;
+  font-family: "Helvetica Neue", arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.container {
+  text-align: center;
+  padding: 5vw 0;
+}
+
+.card__controller {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card__tombolone_number {
+  display: flex;
+  justify-content: center;
+  margin: 7vw 0;
+}
+
+.card__tombolone_number > button {
+  border-radius: 9px;
+}
+
+#tombolone_number {
+  border: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  max-width: 90vw;
+  margin: 8vw auto;
+  padding: 0;
+}
+
+.card__box {
+  display: block;
+  width: 10vw;
+  height: 10vw;
+  line-height: 10vw;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.card--tombolone > .card__box {
+  width: 9vw;
+}
+
+.card--tombolone > .card__box:nth-child(5),
+.card--tombolone > .card__box:nth-child(15),
+.card--tombolone > .card__box:nth-child(25) {
+  border-right-width: 3px;
+}
+
+.card__number {
+  cursor: pointer;
+}
+
+.card__number.card__number--selected {
+  color: #c34f25;
+  background-color: #ff5722;
+}
