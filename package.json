@@ -39,6 +39,21 @@
     "setupFiles": [
       "<rootDir>/tests/__mocks__/browserMocks.js",
       "<rootDir>/tests/__mocks__/setupTests.js"
-    ]
+    ],
+    "testMatch": [ "**/__tests__/**/*.[j]s?(x)", "**/?(*.)+(spec|test).[j]s?(x)" ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{js,jsx}"
+    ],
+    "coverageDirectory": "<rootDir>/tests/coverage",
+    "coverageReporters": ["json", "text", "html"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 1,
+        "functions": 1,
+        "lines": 1,
+        "statements": 1
+      }
+    }
   }
 }
