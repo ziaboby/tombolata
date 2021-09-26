@@ -149,8 +149,15 @@ body {
 }
 
 .card__number {
-  cursor: pointer; 
-  padding: 0.2rem; 
-  font-size: 1.3rem;
-  display: inline-block;
+  color: #444;
+  font-size: 2rem;
+  text-decoration: none;
+  display: block;
+  box-sizing: border-box;
+  /* cursor: pointer; */
+}
+
+.card__number.card__number--selected {
+  color: #0c3073;
+  background-color: #ff5722;
 }

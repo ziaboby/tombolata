@@ -32,7 +32,7 @@ const App = () => {
         />
       ) : null}
       <section className="card__list">
-        {state.cards.map((card) =>
+        {state.cards.map((card, index) =>
           isTombolone ? (
             <TomboloneCard
               dispatch={dispatch}
@@ -40,10 +40,16 @@ const App = () => {
               numbers={card}
             />
           ) : (
-            <Card dispatch={dispatch} isSelected={isSelected} numbers={card} />
+            <Card
+              dispatch={dispatch}
+              isSelected={isSelected}
+              numbers={card}
+              orderIndex={index}
+            />
           )
         )}
       </section>
+
       <div
         style={{ textAlign: "right", paddingRight: "20px", marginTop: "50px" }}
       >
