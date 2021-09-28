@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { SELECT_NUMBER } from "../constants/actions";
 
-const NumberBox = ({ dispatch, number, isSelected }) => {
+const NumberBox = ({ dispatch, number, isSelected, setActiveDescendant }) => {
   const cbClick = function (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -12,6 +12,9 @@ const NumberBox = ({ dispatch, number, isSelected }) => {
       id={number}
       href={`#${number}`}
       className={`card__number${isSelected ? " card__number--selected" : ""}`}
+      onFocus={() => {
+        setActiveDescendant(`cell-${number}`);
+      }}
       onClick={cbClick}
       //onKeyDown={cbClick} // TODO handle axe
     >
@@ -20,18 +23,20 @@ const NumberBox = ({ dispatch, number, isSelected }) => {
   );
 };
 
-const View = ({ numbers, dispatch, isSelected }) =>
+const View = ({ numbers, dispatch, isSelected, setActiveDescendant }) =>
   numbers.map((num) => (
     <li
       role={num ? "gridcell" : "cell"}
-      aria-selected={isSelected}
+      aria-selected={isSelected(num)}
       className="card__box"
+      id={`cell-${num}`}
     >
       {num ? (
         <NumberBox
           dispatch={dispatch}
           number={num}
           isSelected={isSelected(num)}
+          setActiveDescendant={setActiveDescendant}
         />
       ) : null}
     </li>

@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useMemo } from "preact/hooks";
+import { useMemo, useState } from "preact/hooks";
 import View from "./view";
 
 const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
@@ -14,6 +14,7 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
     });
     return res;
   }, [numbers]);
+  const [activeDescendant, setActiveDescendant] = useState(undefined);
 
   return (
     <div
@@ -21,10 +22,15 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
       role="grid"
       aria-label={`Card #${orderIndex}`}
       aria-multiselectable="true"
-      //   aria-activedescendant
+      aria-activedescendant={activeDescendant}
     >
       <ul className="card">
-        <View numbers={final} dispatch={dispatch} isSelected={isSelected} />
+        <View
+          numbers={final}
+          dispatch={dispatch}
+          isSelected={isSelected}
+          setActiveDescendant={setActiveDescendant}
+        />
       </ul>
     </div>
   );
