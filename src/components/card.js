@@ -8,7 +8,7 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
     numbers.forEach((row, index) => {
       row.forEach((number) => {
         const index2 =
-          index * 9 + (number < 10 ? 0 : number == 90 ? 8 : `number`[0]);
+          index * 9 + (number < 10 ? 0 : number == 90 ? 8 : +`${number}`[0]);
         res[index2] = number;
       });
     });
