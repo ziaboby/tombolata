@@ -25,8 +25,8 @@ const NumberBox = ({ dispatch, number, isSelected, setActiveDescendant }) => {
 
 const View = ({ numbers, dispatch, isSelected, setActiveDescendant }) =>
   numbers.map((num) => (
-    <li
-      role={num ? "gridcell" : "cell"}
+    <div
+      role="gridcell"
       aria-selected={isSelected(num)}
       className="card__box"
       id={`cell-${num}`}
@@ -39,7 +39,7 @@ const View = ({ numbers, dispatch, isSelected, setActiveDescendant }) =>
           setActiveDescendant={setActiveDescendant}
         />
       ) : null}
-    </li>
+    </div>
   ));
 
 export default View;

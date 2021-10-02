@@ -24,14 +24,14 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
       aria-multiselectable="true"
       aria-activedescendant={activeDescendant}
     >
-      <ul className="card">
+      <div className="card" role="row">
         <View
           numbers={final}
           dispatch={dispatch}
           isSelected={isSelected}
           setActiveDescendant={setActiveDescendant}
         />
-      </ul>
+      </div>
     </div>
   );
 };
