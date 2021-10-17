@@ -1,7 +1,13 @@
 import { h } from "preact";
 import { SELECT_NUMBER } from "../constants/actions";
 
-const NumberBox = ({ dispatch, number, isSelected, setActiveDescendant }) => {
+const NumberBox = ({
+  dispatch,
+  number,
+  isSelected,
+  setActiveDescendant,
+  onKeyArrowDown,
+}) => {
   const cbClick = function (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -16,14 +22,20 @@ const NumberBox = ({ dispatch, number, isSelected, setActiveDescendant }) => {
         setActiveDescendant(`cell-${number}`);
       }}
       onClick={cbClick}
-      //onKeyDown={cbClick} // TODO handle axe
+      onKeyDown={onKeyArrowDown}
     >
       {number}
     </a>
   );
 };
 
-const View = ({ numbers, dispatch, isSelected, setActiveDescendant }) =>
+const View = ({
+  numbers,
+  dispatch,
+  isSelected,
+  setActiveDescendant,
+  onKeyArrowDown,
+}) =>
   numbers.map((num) => (
     <div
       role="gridcell"
@@ -37,6 +49,7 @@ const View = ({ numbers, dispatch, isSelected, setActiveDescendant }) =>
           number={num}
           isSelected={isSelected(num)}
           setActiveDescendant={setActiveDescendant}
+          onKeyArrowDown={onKeyArrowDown}
         />
       ) : null}
     </div>
