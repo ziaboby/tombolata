@@ -46,7 +46,7 @@
       "<rootDir>/src/**/*.{js,jsx}"
     ],
     "coverageDirectory": "<rootDir>/tests/coverage",
-    "coverageReporters": ["json", "text", "html"],
+    "coverageReporters": ["json", "text", "html", "cobertura"],
     "coverageThreshold": {
       "global": {
         "branches": 1,
