@@ -9,7 +9,7 @@
     "dev": "preact watch",
     "lint": "eslint src",
     "test": "jest",
-    "deploy": "gh-pages -b build -d build -m 'New version deployed'"
+    "deploy": "gh-pages -b build -d build -m \"New version deployed\""
   },
   "eslintConfig": {
     "extends": "preact",
