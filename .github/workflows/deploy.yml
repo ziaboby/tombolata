@@ -1,6 +1,6 @@
 name: deploy-with-build
 on:
-  pull_request:
+  push:
     branches:
       - main
 jobs:
