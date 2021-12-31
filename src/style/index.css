@@ -10,10 +10,13 @@ body {
   color: #444;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
+
 .container {
   text-align: center;
   padding: 5vw 0;
+  background-color: #d3d3d3;
 }
 
 .card__controller {
@@ -35,22 +38,73 @@ body {
   border: 0;
 }
 
+.card__list {
+  margin: 1rem auto;
+  width: 95%;
+}
+
 .card {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  max-width: 90vw;
-  margin: 8vw auto;
+  margin: 1rem;
   padding: 0;
+  background-color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .card__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 30vh);
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  .card {
+    margin: 0;
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(2) {
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .card:nth-child(3),
+  .card:nth-child(4) {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .card:nth-child(5),
+  .card:nth-child(6) {
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(3),
+  .card:nth-child(5) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .card:nth-child(2),
+  .card:nth-child(4),
+  .card:nth-child(6) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
 }
 
 .card__box {
   display: block;
-  width: 10vw;
-  height: 10vw;
-  line-height: 10vw;
+  width: calc(100% / 9);
+  height: auto;
+  text-align: center;
   border: 1px solid black;
   box-sizing: border-box;
 }
@@ -67,6 +121,12 @@ body {
 
 .card__number {
   cursor: pointer;
+  height: 100%;
+  width: 100%;
+  padding: 0.2rem;
+  box-sizing: border-box;
+  line-height: 5rem;
+  font-size: 1.3rem;
 }
 
 .card__number.card__number--selected {
