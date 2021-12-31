@@ -52,6 +52,7 @@ body {
   margin: 1rem;
   padding: 0;
   background-color: #fff;
+  height: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -122,12 +123,19 @@ body {
 }
 
 .card__box {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: calc(100% / 9);
   height: auto;
   text-align: center;
   border: 1px solid black;
   box-sizing: border-box;
+}
+
+.card__box.card__box--selected {
+  color: #c34f25;
+  background-color: #ff5722;
 }
 
 .card--tombolone > .card__box {
@@ -141,16 +149,8 @@ body {
 }
 
 .card__number {
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
-  padding: 0.2rem;
-  box-sizing: border-box;
-  line-height: 5rem;
+  cursor: pointer; 
+  padding: 0.2rem; 
   font-size: 1.3rem;
-}
-
-.card__number.card__number--selected {
-  color: #c34f25;
-  background-color: #ff5722;
+  display: inline-block;
 }
