@@ -1,5 +1,5 @@
 import { getRandom } from "../utils";
-import Lib from "../Cards";
+import { test as Lib } from "../Cards";
 
 jest.mock("../utils", () => ({
   getRandom: jest.fn(),
@@ -95,4 +95,53 @@ describe("Test Tombolone cards generation ", () => {
       5: 2,
     });
   });
+
+  test("Should return the list of cols where retrieving numbers", () => {
+    getRandom.mockReturnValue(0);
+    expect(Lib.getSuitableCols([1, 10, 20, 30, 40, 50, 60, 70, 80])).toEqual([
+      1, 10, 20, 30, 40, 50, 60, 70, 80,
+    ]);
+    expect(
+      Lib.getSuitableCols([1, 10, 20, 30, 40, 50, 60, 70, 80], {
+        1: 1,
+        10: 1,
+        20: 1,
+        30: 1,
+        40: 1,
+      })
+    ).toEqual([10, 20, 30, 40, 50, 60, 70, 80]);
+    expect(
+      Lib.getSuitableCols([1, 10, 20, 30, 40, 50, 60, 70, 80], {
+        1: 1,
+        10: 2,
+        20: 2,
+        30: 2,
+        40: 2,
+        50: 1,
+      })
+    ).toEqual([1, 50, 60, 70, 80]);
+  });
+
+  test("Should creare a card with three five (unique) number rows", () => {
+    getRandom.mockReturnValue(0);
+
+    const output = Lib.getCard({
+      1: [1, 2, 3],
+      10: [11, 12, 13],
+      20: [21, 22, 23],
+      30: [31, 32, 33],
+      40: [41, 42, 43],
+      50: [51, 52, 53],
+      60: [61, 62, 63],
+      70: [71, 72, 73],
+      80: [81, 82, 83],
+    });
+
+    expect(output.rows).toEqual([
+      [1, 11, 21, 31, 41],
+      [12, 22, 32, 42, 51],
+      [2, 52, 61, 71, 81],
+    ]);
+  });
+
 });
