@@ -1,31 +1,37 @@
-import { getRandom } from "../utils";
+import * as Utils from "../utils";
 import { test as Lib } from "../Cards";
 
-jest.mock("../utils", () => ({
-  getRandom: jest.fn(),
-}));
+describe("Cards - Test Tombolone - Cards generation utils function", () => {
+  let getRandomSpy;
 
-describe("Test Tombolone cards generation ", () => {
-  beforeEach(() => {
-    getRandom.mockReset();
+  beforeAll(() => {
+    getRandomSpy = jest.spyOn(Utils, "getRandom");
+  });
+
+  afterEach(() => {
+    getRandomSpy.mockReset && getRandomSpy.mockReset();
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
   });
 
   test("Should extract a random number and remove it from source - extractNumberAndUpdateSource", () => {
     // return index at index 2
-    getRandom.mockReturnValueOnce(2);
+    getRandomSpy.mockReturnValueOnce(2);
 
     const output = Lib.extractNumberAndUpdateSource(
       { 1: [1, 2, 3, 4, 5], 2: [2, 4, 6, 8, 10] },
       1
     );
 
-    expect(getRandom).toHaveBeenCalled();
+    expect(getRandomSpy).toHaveBeenCalled();
     expect(output.extractedNumber).toBe(3);
     expect(output.updatedSource[1]).toEqual(expect.not.arrayContaining([3]));
   });
 
   test("Should create a five number row, taking a single item per column, without counter object", () => {
-    getRandom.mockReturnValue(0);
+    getRandomSpy.mockReturnValue(0);
     const output = Lib.getRow([1, 2, 3, 4, 5, 6, 7], {
       1: [11, 12, 13],
       2: [21, 22, 23],
@@ -55,8 +61,21 @@ describe("Test Tombolone cards generation ", () => {
     });
   });
 
+  test("Should return a row with sorted numbers", () => {
+    getRandomSpy.mockReturnValue(0);
+    const output = Lib.getRow([1, 2, 3, 4, 0], {
+      0: [1, 2, 3],
+      1: [11, 12, 13],
+      2: [21, 22, 23],
+      3: [31, 32, 33],
+      4: [41, 42, 43],
+    });
+
+    expect(output.row).toEqual(expect.arrayContaining([1, 11, 21, 31, 41]));
+  });
+
   test("Should create a five number row, taking a single item per column, with counter object", () => {
-    getRandom.mockReturnValue(0);
+    getRandomSpy.mockReturnValue(0);
     const output = Lib.getRow(
       [1, 2, 3, 4, 5, 6, 7],
       {
@@ -97,7 +116,7 @@ describe("Test Tombolone cards generation ", () => {
   });
 
   test("Should return the list of cols where retrieving numbers", () => {
-    getRandom.mockReturnValue(0);
+    getRandomSpy.mockReturnValue(0);
     expect(Lib.getSuitableCols([1, 10, 20, 30, 40, 50, 60, 70, 80])).toEqual([
       1, 10, 20, 30, 40, 50, 60, 70, 80,
     ]);
@@ -123,7 +142,7 @@ describe("Test Tombolone cards generation ", () => {
   });
 
   test("Should creare a card with three five (unique) number rows", () => {
-    getRandom.mockReturnValue(0);
+    getRandomSpy.mockReturnValue(0);
 
     const output = Lib.getCard({
       1: [1, 2, 3],
@@ -143,5 +162,18 @@ describe("Test Tombolone cards generation ", () => {
       [2, 52, 61, 71, 81],
     ]);
   });
+});
 
+describe("Cards - Test Tombolone - getCards", () => {
+  test.only("Should return 6 cards by default", () => {
+    expect(Lib.getCards().length).toBe(6);
+  });
+
+  test.skip("Should return the required number of cards", () => {
+    expect(Lib.getCards(2).length).toBe(2);
+  });
+
+  test.skip("Should return the required number of cards, even if greater than 6", () => {
+    expect(Lib.getCards(8).length).toBe(8);
+  });
 });

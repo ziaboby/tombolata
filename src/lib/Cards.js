@@ -2,7 +2,7 @@ import { getRandom } from "./utils";
 
 const MAX_CARDS_WITHOUT_DOUBLES = 6,
   EMPTY_SPACES = new Array(91).fill(""),
-  NUMBERS = Object.keys(EMPTY_SPACES),
+  NUMBERS = Object.keys(EMPTY_SPACES).map(Number),
   COLUMN_KEYS = [1, 10, 20, 30, 40, 50, 60, 70, 80],
   SOURCES = {
     [COLUMN_KEYS[0]]: [...NUMBERS.slice(1, 10)],
@@ -53,7 +53,7 @@ function getRow(aColKeys, source, updatedColCounter = {}) {
   return {
     updatedColCounter: { ...updatedColCounterLocal },
     updatedSource: { ...updatedSourceLocal },
-    row: row.slice(0).sort(),
+    row: row.slice(0).sort((nA, nB) => nA - nB),
   };
 }
 
@@ -149,12 +149,25 @@ function filterOutColWithoutAvailableValues(aColumnKeys, source) {
   return aColumnKeys.filter((colKey) => source[colKey].length);
 }
 
-  /**
-   * first row - 5 random col i, contando quelle uscite
-   *    estrarre un numero random da ciascuna colonna uscita precedentemente ed eliminarla da TOT
-   * second row - 5 random con i, contando quelle uscite
-   * third row - 5 random con i, partendo da un array che esclude le col già uscite 2 volte
-   */
+/**
+ * Generate cards
+ * @param {number} nRequiredCards
+ * @returns {array}
+ */
+function getCards(nRequiredCards = MAX_CARDS_WITHOUT_DOUBLES) {
+  let cards = [],
+    sourceLocal = structuredClone(SOURCES);
+
+  while (cards.length < nRequiredCards) {
+    if (cards.length == MAX_CARDS_WITHOUT_DOUBLES) {
+      sourceLocal = structuredClone(SOURCES);
+    }
+
+    const { rows, updatedSource } = getCard(sourceLocal);
+    cards.push(rows);
+    sourceLocal = { ...updatedSource };
+  }
+  return cards;
 }
 
 export const test = {
@@ -164,3 +177,5 @@ export const test = {
   getCard,
   getCards,
 };
+
+export default { getCards };

@@ -1,6 +1,5 @@
 === TODO ===
 
-* fix failing tests - getCards
 * generate tombolone - re-use from the previous version
 * update preact
     Package        Current   Wanted   Latest  
@@ -14,6 +13,7 @@
 
 
 === IN PROGRESS ===
+* fix failing tests - getCards
 
 
 === DONE ===
