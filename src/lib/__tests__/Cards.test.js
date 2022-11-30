@@ -165,15 +165,15 @@ describe("Cards - Test Tombolone - Cards generation utils function", () => {
 });
 
 describe("Cards - Test Tombolone - getCards", () => {
-  test.only("Should return 6 cards by default", () => {
+  test("Should return 6 cards by default", () => {
     expect(Lib.getCards().length).toBe(6);
   });
 
-  test.skip("Should return the required number of cards", () => {
+  test("Should return the required number of cards", () => {
     expect(Lib.getCards(2).length).toBe(2);
   });
 
-  test.skip("Should return the required number of cards, even if greater than 6", () => {
+  test("Should return the required number of cards, even if greater than 6", () => {
     expect(Lib.getCards(8).length).toBe(8);
   });
 });

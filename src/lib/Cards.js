@@ -95,10 +95,7 @@ function getCard(sourceRef) {
  */
 function createRows(source, colCounter, rows = []) {
   const { row, updatedSource, updatedColCounter } = getRow(
-    getSuitableCols(
-      filterOutColWithoutAvailableValues(COLUMN_KEYS, source),
-      colCounter
-    ),
+    getSuitableCols(COLUMN_KEYS, colCounter, source),
     source,
     colCounter
   );
@@ -117,36 +114,23 @@ function createRows(source, colCounter, rows = []) {
  * Filter columns based of the row about to be created
  * @param {array} aColumnKeys - list of available columns
  * @param {object} colCounter - object with key the column identifier and with value the counter of numbers from a column already used in the current card
- * @returns {array}
- */
-function getSuitableCols(aColumnKeys, colCounter = {}) {
-  const usedCols = Object.keys(colCounter);
-  if (!usedCols.length) {
-    return aColumnKeys.slice(0);
-  }
-
-  const nRow = Math.max(...Object.values(colCounter));
-
-  if (nRow == 1) {
-    const indexColToRemove = getRandom(0, 4),
-      colToRemove = usedCols[indexColToRemove];
-
-    return aColumnKeys.filter((colKey) => colKey != colToRemove);
-  }
-
-  return aColumnKeys.filter(
-    (colKey) => colKey == COLUMN_KEYS.at(-1) || (colCounter[colKey] || 1) < 2
-  );
-}
-
-/**
- * Filter out columns with no available numbers
- * @param {array} aColumnKeys - list of available columns
  * @param {object} source - object containing all the available numbers grouped by col key
  * @returns {array}
  */
-function filterOutColWithoutAvailableValues(aColumnKeys, source) {
-  return aColumnKeys.filter((colKey) => source[colKey].length);
+function getSuitableCols(aColumnKeys, colCounter = {}, source) {
+  const aColsOrderedByUnusedNumbers = Object.entries(source)
+    .map(([colKey, numbers]) => [colKey, numbers.length])
+    .sort((colA, colB) => colB[1] - colA[1]);
+
+  if (aColsOrderedByUnusedNumbers.at(-1)[1] > 3) {
+    return aColumnKeys.slice(0);
+  }
+
+  const aFilteredColsOrderedByUnusedNumbers = aColsOrderedByUnusedNumbers
+    .filter((item) => item[1] != 0)
+    .map((item) => item[0]);
+
+  return aFilteredColsOrderedByUnusedNumbers.slice(0, 5);
 }
 
 /**
