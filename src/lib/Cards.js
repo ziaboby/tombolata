@@ -95,7 +95,7 @@ function getCard(sourceRef) {
  */
 function createRows(source, colCounter, rows = []) {
   const { row, updatedSource, updatedColCounter } = getRow(
-    getSuitableCols(COLUMN_KEYS, colCounter, source),
+    getSuitableCols(COLUMN_KEYS, source),
     source,
     colCounter
   );
@@ -117,9 +117,9 @@ function createRows(source, colCounter, rows = []) {
  * @param {object} source - object containing all the available numbers grouped by col key
  * @returns {array}
  */
-function getSuitableCols(aColumnKeys, colCounter = {}, source) {
+function getSuitableCols(aColumnKeys, source) {
   const aColsOrderedByUnusedNumbers = Object.entries(source)
-    .map(([colKey, numbers]) => [colKey, numbers.length])
+    .map(([colKey, numbers]) => [+colKey, numbers.length])
     .sort((colA, colB) => colB[1] - colA[1]);
 
   if (aColsOrderedByUnusedNumbers.at(-1)[1] > 3) {
@@ -155,6 +155,7 @@ function getCards(nRequiredCards = MAX_CARDS_WITHOUT_DOUBLES) {
 }
 
 export const test = {
+  SOURCES,
   extractNumberAndUpdateSource,
   getSuitableCols,
   getRow,
