@@ -1,6 +1,4 @@
 === TODO ===
-
-* generate tombolone - re-use from the previous version
 * update preact
     Package        Current   Wanted   Latest  
     jest            27.5.1   27.5.1   29.3.1  
@@ -13,9 +11,9 @@
 
 
 === IN PROGRESS ===
-* fix failing tests - getCards
 
 
 === DONE ===
-
+* fix failing tests - getCards
 * update jest and eslint
+* generate tombolone - re-use from the previous version

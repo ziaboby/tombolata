@@ -169,3 +169,68 @@ describe("Cards - Test Tombolone - getCards", () => {
     expect(Lib.getCards(8).length).toBe(8);
   });
 });
+
+describe("Cards - Tombolone v1 - Test cards generation", () => {
+  let cards = Lib.getTomboloneCardsV1();
+
+  test("Script generates 3 coupled-cards of 30 numbers", () => {
+    expect(cards).toHaveLength(3);
+    cards.forEach((card) => {
+      expect(card).toHaveLength(30);
+    });
+    expect.assertions(4);
+  });
+
+  test("Each card has ordered numbers", () => {
+    cards.forEach((card) => {
+      card.forEach((number, index) => {
+        if (index) {
+          expect(+number).toBeGreaterThan(+card[index - 1]);
+        }
+      });
+    });
+    expect.assertions(87); // 29 * 3
+  });
+});
+
+describe("Cards - Tombolone v2 - Test cards generation", () => {
+  const cards = Lib.getTomboloneCardsV2();
+
+  test("Should be 6 cards", () => {
+    expect(cards.length).toBe(6);
+  });
+
+  test("Should include oredered numbers", () => {
+    expect(cards[0]).toEqual(
+      expect.arrayContaining([
+        [1, 2, 3, 4, 5],
+        [11, 12, 13, 14, 15],
+        [21, 22, 23, 24, 25],
+      ])
+    );
+
+    expect(cards[1]).toEqual(
+      expect.arrayContaining([
+        [6, 7, 8, 9, 10],
+        [16, 17, 18, 19, 20],
+        [26, 27, 28, 29, 30],
+      ])
+    );
+
+    expect(cards[2]).toEqual(
+      expect.arrayContaining([
+        [31, 32, 33, 34, 35],
+        [41, 42, 43, 44, 45],
+        [51, 52, 53, 54, 55],
+      ])
+    );
+
+    expect(cards[5]).toEqual(
+      expect.arrayContaining([
+        [66, 67, 68, 69, 70],
+        [76, 77, 78, 79, 80],
+        [86, 87, 88, 89, 90],
+      ])
+    );
+  });
+});
