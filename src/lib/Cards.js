@@ -20,11 +20,9 @@ const MAX_CARDS_WITHOUT_DOUBLES = 6,
  * Generate a five number row
  * @param {array} aColKeys
  * @param {object} source
- * @param {object} updatedColCounter
  * @returns {object}
  */
-function getRow(aColKeys, source, updatedColCounter = {}) {
-  const updatedColCounterLocal = { ...updatedColCounter };
+function getRow(aColKeys, source) {
   let extractedColsCounter = -1,
     aColKeysLocal = aColKeys.slice(0),
     updatedSourceLocal = { ...source },
@@ -35,10 +33,6 @@ function getRow(aColKeys, source, updatedColCounter = {}) {
       extractedCol = aColKeysLocal[extractedColIndex];
 
     aColKeysLocal = aColKeysLocal.filter((item) => item != extractedCol);
-
-    updatedColCounterLocal[extractedCol] = updatedColCounterLocal[extractedCol]
-      ? updatedColCounterLocal[extractedCol] + 1
-      : 1;
 
     const { extractedNumber, updatedSource } = extractNumberAndUpdateSource(
       updatedSourceLocal,
@@ -51,7 +45,6 @@ function getRow(aColKeys, source, updatedColCounter = {}) {
   }
 
   return {
-    updatedColCounter: { ...updatedColCounterLocal },
     updatedSource: { ...updatedSourceLocal },
     row: row.slice(0).sort((nA, nB) => nA - nB),
   };
@@ -83,21 +76,19 @@ function extractNumberAndUpdateSource(source, nColKey) {
  * @returns {object}
  */
 function getCard(sourceRef) {
-  return createRows(sourceRef, {});
+  return createRows(sourceRef);
 }
 
 /**
  * Recursive function to create a three row card
  * @param {object} source - object containing all the available numbers grouped by col key
- * @param {object} colCounter - object with key the column identifier and with value the counter of numbers from a column already used in the current card
  * @param {array} rows - list of row of a card
  * @returns {object}
  */
-function createRows(source, colCounter, rows = []) {
-  const { row, updatedSource, updatedColCounter } = getRow(
+function createRows(source, rows = []) {
+  const { row, updatedSource } = getRow(
     getSuitableCols(COLUMN_KEYS, source),
-    source,
-    colCounter
+    source
   );
 
   if (rows.length == 2) {
@@ -107,13 +98,12 @@ function createRows(source, colCounter, rows = []) {
     };
   }
 
-  return createRows(updatedSource, updatedColCounter, [...rows, row]);
+  return createRows(updatedSource, [...rows, row]);
 }
 
 /**
  * Filter columns based of the row about to be created
  * @param {array} aColumnKeys - list of available columns
- * @param {object} colCounter - object with key the column identifier and with value the counter of numbers from a column already used in the current card
  * @param {object} source - object containing all the available numbers grouped by col key
  * @returns {array}
  */

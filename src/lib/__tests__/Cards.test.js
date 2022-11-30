@@ -52,13 +52,6 @@ describe("Cards - Test Tombolone - Cards generation utils function", () => {
       6: [61, 62, 63],
       7: [71, 72, 73],
     });
-    expect(output.updatedColCounter).toEqual({
-      1: 1,
-      2: 1,
-      3: 1,
-      4: 1,
-      5: 1,
-    });
   });
 
   test("Should return a row with sorted numbers", () => {
@@ -76,25 +69,15 @@ describe("Cards - Test Tombolone - Cards generation utils function", () => {
 
   test("Should create a five number row, taking a single item per column, with counter object", () => {
     getRandomSpy.mockReturnValue(0);
-    const output = Lib.getRow(
-      [1, 2, 3, 4, 5, 6, 7],
-      {
-        1: [11, 12, 13],
-        2: [21, 22, 23],
-        3: [31, 32, 33],
-        4: [41, 42, 43],
-        5: [51, 52, 53],
-        6: [61, 62, 63],
-        7: [71, 72, 73],
-      },
-      {
-        1: 1,
-        2: 1,
-        3: 1,
-        4: 1,
-        5: 1,
-      }
-    );
+    const output = Lib.getRow([1, 2, 3, 4, 5, 6, 7], {
+      1: [11, 12, 13],
+      2: [21, 22, 23],
+      3: [31, 32, 33],
+      4: [41, 42, 43],
+      5: [51, 52, 53],
+      6: [61, 62, 63],
+      7: [71, 72, 73],
+    });
 
     expect(output.row).toEqual([11, 21, 31, 41, 51]);
     expect(output.updatedSource).toEqual({
@@ -105,13 +88,6 @@ describe("Cards - Test Tombolone - Cards generation utils function", () => {
       5: [52, 53],
       6: [61, 62, 63],
       7: [71, 72, 73],
-    });
-    expect(output.updatedColCounter).toEqual({
-      1: 2,
-      2: 2,
-      3: 2,
-      4: 2,
-      5: 2,
     });
   });
 
