@@ -101,22 +101,22 @@ body {
     grid-column-end: 3;
   }
 
-  .card.card--tombolone {
+  .card__container--tombolone {
     grid-column-start: 1;
     grid-column-end: 3;
   }
 
-  .card.card--tombolone:nth-child(1) {
+  .card__container--tombolone:nth-child(1) {
     grid-row-start: 1;
     grid-row-end: 2;
   }
 
-  .card.card--tombolone:nth-child(2) {
+  .card__container--tombolone:nth-child(2) {
     grid-row-start: 2;
     grid-row-end: 3;
   }
 
-  .card.card--tombolone:nth-child(3) {
+  .card__container--tombolone:nth-child(3) {
     grid-row-start: 3;
     grid-row-end: 4;
   }
