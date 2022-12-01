@@ -15,7 +15,7 @@ function getIndexNextFocusableNumberInCard(iCurrentNumber, diffByKey, aList) {
         ? iCurrentNumber + diffByKey - aList.length - 1
         : iCurrentNumber + diffByKey,
     nextNumber = aList.at(iNextNumber);
-  console.log(iNextNumber, nextNumber);
+
   return nextNumber
     ? iNextNumber
     : getIndexNextFocusableNumberInCard(
