@@ -16,13 +16,15 @@ const NumberBox = ({
   return (
     <a
       id={number}
-      href={`#${number}`}
+      href={setActiveDescendant ? `#${number}` : undefined}
+      role="link"
       className={`card__number${isSelected ? " card__number--selected" : ""}`}
       onFocus={() => {
         setActiveDescendant && setActiveDescendant(`cell-${number}`);
       }}
       onClick={cbClick}
       onKeyDown={onKeyArrowDown}
+      aria-disabled={!setActiveDescendant}
     >
       {number}
     </a>

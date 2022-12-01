@@ -139,7 +139,7 @@ body {
 }
 
 .card--tombolone > .card__box {
-  width: calc(100% / 10);
+  width: calc(100% / 10); 
 }
 
 .card--tombolone > .card__box:nth-child(5),
@@ -160,4 +160,8 @@ body {
 .card__number.card__number--selected {
   color: #0c3073;
   background-color: #ff5722;
+}
+
+.card--tombolone .card__number {
+  pointer-events: none;
 }
