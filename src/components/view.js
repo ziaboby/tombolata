@@ -41,7 +41,7 @@ const View = ({
       role="gridcell"
       aria-selected={isSelected(num)}
       className="card__box"
-      id={`cell-${num}`}
+      id={num ? `cell-${num}` : undefined}
     >
       {num ? (
         <NumberBox
