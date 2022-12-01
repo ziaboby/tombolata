@@ -9,6 +9,7 @@
 * npm audit
 * connect with new logic
 * removed unused files 
+* BUG - selected card cell, highlight only the number, not the entire cell
 
 
 === IN PROGRESS ===
@@ -16,3 +17,4 @@
 
 
 === DONE ===
+* BUG - tombolone, console error when clicking on a number

@@ -19,7 +19,7 @@ const NumberBox = ({
       href={`#${number}`}
       className={`card__number${isSelected ? " card__number--selected" : ""}`}
       onFocus={() => {
-        setActiveDescendant(`cell-${number}`);
+        setActiveDescendant && setActiveDescendant(`cell-${number}`);
       }}
       onClick={cbClick}
       onKeyDown={onKeyArrowDown}
@@ -39,7 +39,7 @@ const View = ({
   numbers.map((num) => (
     <div
       role="gridcell"
-      aria-selected={isSelected(num)}
+      aria-selected={num ? isSelected(num) : undefined}
       className="card__box"
       id={num ? `cell-${num}` : undefined}
     >
