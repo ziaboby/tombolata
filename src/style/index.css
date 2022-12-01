@@ -34,6 +34,11 @@ body {
   border-radius: 9px;
 }
 
+.card__controller > button:focus-visible,
+.card__tombolone_number > button:focus-visible {
+  outline: 3px dashed black;
+}
+
 #tombolone_number {
   border: 0;
   font-size: 2rem;
@@ -139,7 +144,7 @@ body {
 }
 
 .card--tombolone > .card__box {
-  width: calc(100% / 10); 
+  width: calc(100% / 10);
 }
 
 .card--tombolone > .card__box:nth-child(5),
@@ -152,9 +157,16 @@ body {
   color: #444;
   font-size: 2rem;
   text-decoration: none;
-  display: block;
   box-sizing: border-box;
-  /* cursor: pointer; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__number:focus-visible {
+  outline: 5px dashed #ff5722;
 }
 
 .card__number.card__number--selected {
