@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { useMemo } from "preact/hooks";
 import { SELECT_NUMBER } from "../constants/actions";
 
 const NumberBox = ({
@@ -7,6 +8,7 @@ const NumberBox = ({
   isSelected,
   setActiveDescendant,
   onKeyArrowDown,
+  isFirstCardNumber = false,
 }) => {
   const cbClick = function (event) {
     event.preventDefault();
@@ -25,6 +27,7 @@ const NumberBox = ({
       onClick={cbClick}
       onKeyDown={onKeyArrowDown}
       aria-disabled={!setActiveDescendant}
+      tabIndex={isFirstCardNumber ? 0 : -1}
     >
       {number}
     </a>
@@ -37,8 +40,13 @@ const View = ({
   isSelected,
   setActiveDescendant,
   onKeyArrowDown,
-}) =>
-  numbers.map((num) => (
+}) => {
+  const firstNumber = useMemo(
+    () => numbers.find((item) => item && !isNaN(item)),
+    [numbers]
+  );
+
+  return numbers.map((num) => (
     <div
       role="gridcell"
       aria-selected={num ? isSelected(num) : undefined}
@@ -52,9 +60,11 @@ const View = ({
           isSelected={isSelected(num)}
           setActiveDescendant={setActiveDescendant}
           onKeyArrowDown={onKeyArrowDown}
+          isFirstCardNumber={num === firstNumber}
         />
       ) : null}
     </div>
   ));
+};
 
 export default View;

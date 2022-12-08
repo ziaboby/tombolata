@@ -1,17 +1,18 @@
 === TODO ===
-* npm audit
 * connect with new logic
-* removed unused files 
-* BUG - a11y - arrows to move inside a cards, tabs to move among cards
+* removed unused files
+* BUG - a11y - tombolone - New number announcement
 * improve buttons 
 
 
-=== IN PROGRESS ===
+=== IN PROGRESS === 
 
 
 === DONE ===
+* npm audit
 * update preact 
 * add accessibility features
 * BUG - tombolone, console error when clicking on a number
 * BUG - selected card cell, highlight only the number, not the entire cell
+* BUG - a11y - arrows to move inside a cards, tabs to move among cards
 
