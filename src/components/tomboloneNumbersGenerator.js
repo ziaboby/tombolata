@@ -18,7 +18,12 @@ export default ({ dispatch, number }) => (
     >
       New number
     </button>
-    <div id="tombolone_number" className="card__box">
+    <div
+      id="tombolone_number"
+      className="card__box"
+      role="status"
+      aria-live={number ? "assertive" : "off"}
+    >
       {number || ""}
     </div>
   </section>
