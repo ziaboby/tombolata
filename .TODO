@@ -1,21 +1,17 @@
 === TODO ===
-* update preact
-    Package        Current   Wanted   Latest  
-    jest            27.5.1   27.5.1   29.3.1  
-    preact          10.5.7  10.11.3  10.11.3  
-    preact-cli       3.0.5    3.4.1    3.4.1  
-    preact-router    3.2.1    3.2.1    4.1.0  
-    sirv-cli         1.0.3    1.0.3    2.0.2  
 * npm audit
 * connect with new logic
 * removed unused files 
+* BUG - a11y - arrows to move inside a cards, tabs to move among cards
+* improve buttons 
 
 
 === IN PROGRESS ===
-* add accessibility features
 
 
 === DONE ===
+* update preact 
+* add accessibility features
 * BUG - tombolone, console error when clicking on a number
 * BUG - selected card cell, highlight only the number, not the entire cell
 
