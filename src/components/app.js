@@ -39,12 +39,14 @@ const App = () => {
           {state.cards.map((card, index) =>
             isTombolone ? (
               <TomboloneCard
+                key={index}
                 dispatch={dispatch}
                 isSelected={isSelected}
                 numbers={card}
               />
             ) : (
               <Card
+                key={index + card[0]}
                 dispatch={dispatch}
                 isSelected={isSelected}
                 numbers={card}
