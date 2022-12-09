@@ -1,13 +1,13 @@
 === TODO ===
-* improve buttons 
 
 
 === IN PROGRESS === 
-* connect with new logic
-* removed unused files
 
 
 === DONE ===
+* improve buttons 
+* connect with new logic
+* removed unused files
 * npm audit
 * update preact 
 * add accessibility features

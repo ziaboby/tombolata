@@ -22,12 +22,21 @@ body {
 .card__controller {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .card__tombolone_number {
   display: flex;
   justify-content: center;
   margin: 1rem 0;
+}
+
+button {
+  font-size: 1rem;
+  font-weight: bold;
+  background: orange;
+  border-radius: 5px;
+  padding: 0.65rem;
 }
 
 .card__tombolone_number > button {
