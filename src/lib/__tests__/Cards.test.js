@@ -1,5 +1,5 @@
 import * as Utils from "../utils";
-import { test as Lib } from "../Cards";
+import { test as Lib } from "../Cards/index";
 
 describe("Cards - Test Tombolone - Cards generation utils function", () => {
   let getRandomSpy;
@@ -184,12 +184,10 @@ describe("Cards - Tombolone v1 - Test cards generation", () => {
   test("Each card has ordered numbers", () => {
     cards.forEach((card) => {
       card.forEach((number, index) => {
-        if (index) {
-          expect(+number).toBeGreaterThan(+card[index - 1]);
-        }
+        expect(+number).toBeGreaterThan(index ? +card[index - 1] : 0);
       });
     });
-    expect.assertions(87); // 29 * 3
+    expect.assertions(90);
   });
 });
 
