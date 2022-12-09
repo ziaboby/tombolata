@@ -1,7 +1,11 @@
 import { SOURCES, MAX_CARDS_WITHOUT_DOUBLES } from "./src/settings";
 import { extractNumberAndUpdateSource, getRow } from "./src/row";
 import { getSuitableCols, getCard } from "./src/card";
-import { getTomboloneCardsV1, getTomboloneCardsV2 } from "./src/tombolone";
+import {
+  getTomboloneCardsV1,
+  getTomboloneCardsV2,
+  convertOutputGetTomboloneCardsV2ToV1,
+} from "./src/tombolone";
 
 /**
  * Generate cards
@@ -33,6 +37,12 @@ export const test = {
   getCards,
   getTomboloneCardsV1,
   getTomboloneCardsV2,
+  convertOutputGetTomboloneCardsV2ToV1,
 };
 
-export default { getCards, getTomboloneCardsV1, getTomboloneCardsV2 };
+export default {
+  getCards,
+  getTomboloneCardsV1,
+  getTomboloneCardsV2,
+  convertOutputGetTomboloneCardsV2ToV1,
+};

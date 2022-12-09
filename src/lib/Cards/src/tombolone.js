@@ -26,3 +26,14 @@ export function getTomboloneCardsV2() {
 
   return cards;
 }
+
+export function convertOutputGetTomboloneCardsV2ToV1(aCardsV2) {
+  const flatAndSort = function (list) {
+    return list.flat(3).sort((a, b) => a - b);
+  };
+  return [
+    flatAndSort([aCardsV2[0], aCardsV2[1]]),
+    flatAndSort([aCardsV2[2], aCardsV2[3]]),
+    flatAndSort([aCardsV2[4], aCardsV2[5]]),
+  ];
+}

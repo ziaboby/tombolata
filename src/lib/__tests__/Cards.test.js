@@ -198,7 +198,7 @@ describe("Cards - Tombolone v2 - Test cards generation", () => {
     expect(cards.length).toBe(6);
   });
 
-  test("Should include oredered numbers", () => {
+  test("Should include ordered numbers", () => {
     expect(cards[0]).toEqual(
       expect.arrayContaining([
         [1, 2, 3, 4, 5],
@@ -230,5 +230,13 @@ describe("Cards - Tombolone v2 - Test cards generation", () => {
         [86, 87, 88, 89, 90],
       ])
     );
+  });
+
+  test("Should create 3 coupled-cards of 30 numbers as fallback to Tombolone v1", () => {
+    const output = Lib.convertOutputGetTomboloneCardsV2ToV1(cards);
+    expect(output[0]).toEqual([
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+      22, 23, 24, 25, 26, 27, 28, 29, 30,
+    ]);
   });
 });
