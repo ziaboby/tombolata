@@ -45,7 +45,8 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
       if (!diffByKey) {
         return;
       }
-      const currentNumber = event.target.id,
+
+      const currentNumber = +event.target.id,
         iCurrentNumber = final.indexOf(currentNumber),
         iNextNumber = getIndexNextFocusableNumberInCard(
           iCurrentNumber,
