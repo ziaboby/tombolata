@@ -27,8 +27,8 @@ const App = () => {
       <header>
         <h1>Tombolata</h1>
       </header>
-      <Controllers dispatch={dispatch} />
       <main>
+        <Controllers dispatch={dispatch} />
         {isTombolone ? (
           <TomboloneNumbersGenerator
             dispatch={dispatch}

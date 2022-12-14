@@ -62,7 +62,7 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
     <div
       className="card__container"
       role="grid"
-      aria-label={`Card #${orderIndex}`}
+      aria-label={`Card num. ${orderIndex + 1}`}
       aria-multiselectable="true"
       aria-activedescendant={activeDescendant}
     >
