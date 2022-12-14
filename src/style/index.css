@@ -17,6 +17,9 @@ body {
   text-align: center;
   padding: 3vw 0;
   background-color: #d3d3d3;
+  min-width: 25rem;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .card__controller {
