@@ -34,7 +34,8 @@ body {
   margin: 1rem 0;
 }
 
-button {
+.card__controller button,
+.card__tombolone_number > button {
   font-size: 1rem;
   font-weight: bold;
   background: orange;

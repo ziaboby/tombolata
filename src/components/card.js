@@ -11,7 +11,9 @@ const MAP_EVENT_KEYARROW = {
 
 function getIndexNextFocusableNumberInCard(iCurrentNumber, diffByKey, aList) {
   const iNextNumber =
-      iCurrentNumber + diffByKey > aList.length - 1
+      iCurrentNumber == -1
+        ? aList.findIndex((item) => item > 0)
+        : iCurrentNumber + diffByKey > aList.length - 1
         ? iCurrentNumber + diffByKey - aList.length - 1
         : iCurrentNumber + diffByKey,
     nextNumber = aList.at(iNextNumber);
@@ -46,7 +48,7 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
         return;
       }
 
-      const currentNumber = +event.target.id,
+      const currentNumber = event.target.id ? +event.target.id : -1,
         iCurrentNumber = final.indexOf(currentNumber),
         iNextNumber = getIndexNextFocusableNumberInCard(
           iCurrentNumber,
@@ -66,6 +68,8 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
       aria-label={`Card num. ${orderIndex + 1}`}
       aria-multiselectable="true"
       aria-activedescendant={activeDescendant}
+      tabindex="0"
+      onKeyDown={onKeyArrowDown}
     >
       <div className="card" role="row">
         <View
@@ -73,7 +77,6 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
           dispatch={dispatch}
           isSelected={isSelected}
           setActiveDescendant={setActiveDescendant}
-          onKeyArrowDown={onKeyArrowDown}
         />
       </div>
     </div>
