@@ -15,8 +15,8 @@ const NumberBox = ({ dispatch, number, isSelected, setActiveDescendant }) => {
         setActiveDescendant && setActiveDescendant(`cell-${number}`);
       }}
       onClick={cbClick}
-      aria-disabled={!setActiveDescendant}
       disabled={!setActiveDescendant}
+      tabIndex="-1"
     >
       {number}
     </button>
@@ -29,6 +29,7 @@ const View = ({ numbers, dispatch, isSelected, setActiveDescendant }) => {
       key={num || Date.now() + index}
       role="gridcell"
       aria-selected={num ? isSelected(num) : undefined}
+      aria-disabled={!num}
       className="card__box"
       id={num ? `cell-${num}` : undefined}
     >
