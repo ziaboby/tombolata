@@ -1,18 +1,10 @@
 === TODO ===
-
+* improve screen reader navigation in cards view
+* add E2E tests
 
 === IN PROGRESS === 
 
 
 === DONE ===
-* improve buttons 
-* connect with new logic
-* removed unused files
-* npm audit
-* update preact 
-* add accessibility features
-* BUG - tombolone, console error when clicking on a number
-* BUG - selected card cell, highlight only the number, not the entire cell
-* BUG - a11y - arrows to move inside a cards, tabs to move among cards
-* BUG - a11y - tombolone - New number announcement
+
 
