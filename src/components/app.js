@@ -24,32 +24,39 @@ const App = () => {
 
   return (
     <div id="app" className="container">
-      <Controllers dispatch={dispatch} />
-      {isTombolone ? (
-        <TomboloneNumbersGenerator
-          dispatch={dispatch}
-          number={state.tomboloneNewNumber}
-        />
-      ) : null}
-      <section className="card__list">
-        {state.cards.map((card) =>
-          isTombolone ? (
-            <TomboloneCard
-              dispatch={dispatch}
-              isSelected={isSelected}
-              numbers={card}
-            />
-          ) : (
-            <Card dispatch={dispatch} isSelected={isSelected} numbers={card} />
-          )
-        )}
-      </section>
-      <div
-        style={{ textAlign: "right", paddingRight: "20px", marginTop: "50px" }}
-      >
-        {" "}
-        {settings.version}{" "}
-      </div>
+      <header>
+        <h1>Tombolata</h1>
+      </header>
+      <main>
+        <Controllers dispatch={dispatch} />
+        {isTombolone ? (
+          <TomboloneNumbersGenerator
+            dispatch={dispatch}
+            number={state.tomboloneNewNumber}
+          />
+        ) : null}
+        <section className="card__list">
+          {state.cards.map((card, index) =>
+            isTombolone ? (
+              <TomboloneCard
+                key={index}
+                dispatch={dispatch}
+                isSelected={isSelected}
+                numbers={card}
+              />
+            ) : (
+              <Card
+                key={index + card[0]}
+                dispatch={dispatch}
+                isSelected={isSelected}
+                numbers={card}
+                orderIndex={index}
+              />
+            )
+          )}
+        </section>
+      </main>
+      <footer>v.{settings.version} </footer>
     </div>
   );
 };
