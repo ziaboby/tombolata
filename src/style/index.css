@@ -51,7 +51,11 @@ button {
   border-radius: 9px;
 }
 
+[role="gridcell"]:focus,
+[role="gridcell"]:focus-visible,
+.card__controller > button:focus,
 .card__controller > button:focus-visible,
+.card__tombolone_number > button:focus,
 .card__tombolone_number > button:focus-visible {
   outline: 3px dashed orangered;
 }
