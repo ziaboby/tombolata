@@ -62,15 +62,19 @@ body {
 }
 
 .card {
+  margin: 1rem;
+  padding: 0;
+  height: 100%;
+}
+
+.card > .card__row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  margin: 1rem;
-  padding: 0;
   background-color: #fff;
-  height: 100%;
+  height: 33%;
 }
 
 @media (min-width: 1024px) {
@@ -83,43 +87,39 @@ body {
     width: 95%;
   }
 
-  .card {
-    margin: 0;
-  }
-
-  .card:nth-child(1),
-  .card:nth-child(2) {
+  .card__container:nth-child(1),
+  .card__container:nth-child(2) {
     grid-row-start: 1;
     grid-row-end: 2;
   }
 
-  .card:nth-child(3),
-  .card:nth-child(4) {
+  .card__container:nth-child(3),
+  .card__container:nth-child(4) {
     grid-row-start: 2;
     grid-row-end: 3;
   }
 
-  .card:nth-child(5),
-  .card:nth-child(6) {
+  .card__container:nth-child(5),
+  .card__container:nth-child(6) {
     grid-row-start: 3;
     grid-row-end: 4;
   }
 
-  .card:nth-child(1),
-  .card:nth-child(3),
-  .card:nth-child(5) {
+  .card__container:nth-child(1),
+  .card__container:nth-child(3),
+  .card__container:nth-child(5) {
     grid-column-start: 1;
     grid-column-end: 2;
   }
 
-  .card:nth-child(2),
-  .card:nth-child(4),
-  .card:nth-child(6) {
+  .card__container:nth-child(2),
+  .card__container:nth-child(4),
+  .card__container:nth-child(6) {
     grid-column-start: 2;
     grid-column-end: 3;
   }
 
-  .card__container--tombolone {
+  .card__container.card__container--tombolone {
     grid-column-start: 1;
     grid-column-end: 3;
   }
@@ -137,6 +137,10 @@ body {
   .card__container--tombolone:nth-child(3) {
     grid-row-start: 3;
     grid-row-end: 4;
+  }
+
+  .card {
+    margin: 0;
   }
 }
 
@@ -156,13 +160,13 @@ body {
   background-color: #ff5722;
 }
 
-.card--tombolone > .card__box {
+.card--tombolone .card__box {
   width: calc(100% / 10);
 }
 
-.card--tombolone > .card__box:nth-child(5),
-.card--tombolone > .card__box:nth-child(15),
-.card--tombolone > .card__box:nth-child(25) {
+.card--tombolone .card__box:nth-child(5),
+.card--tombolone .card__box:nth-child(15),
+.card--tombolone .card__box:nth-child(25) {
   border-right-width: 3px;
 }
 

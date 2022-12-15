@@ -71,13 +71,31 @@ const Card = ({ dispatch, numbers, isSelected, orderIndex }) => {
       tabindex="0"
       onKeyDown={onKeyArrowDown}
     >
-      <div className="card" role="row">
-        <View
-          numbers={final}
-          dispatch={dispatch}
-          isSelected={isSelected}
-          setActiveDescendant={setActiveDescendant}
-        />
+      <div className="card">
+        <div className="card__row" role="row">
+          <View
+            numbers={final.slice(0, 9)}
+            dispatch={dispatch}
+            isSelected={isSelected}
+            setActiveDescendant={setActiveDescendant}
+          />
+        </div>
+        <div className="card__row" role="row">
+          <View
+            numbers={final.slice(9, 18)}
+            dispatch={dispatch}
+            isSelected={isSelected}
+            setActiveDescendant={setActiveDescendant}
+          />
+        </div>
+        <div className="card__row" role="row">
+          <View
+            numbers={final.slice(18, 27)}
+            dispatch={dispatch}
+            isSelected={isSelected}
+            setActiveDescendant={setActiveDescendant}
+          />
+        </div>
       </div>
     </div>
   );
