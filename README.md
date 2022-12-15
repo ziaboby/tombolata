@@ -19,5 +19,11 @@ npm install
 npm run dev
 
 # build for production with minification
-preact build --no-prerender
+npm run build
+
+# deploy
+npm run build
+# after build folder creation
+npm run deploy
+
 ```
