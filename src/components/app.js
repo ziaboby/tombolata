@@ -56,12 +56,7 @@ const App = () => {
           )}
         </section>
       </main>
-      <footer
-        style={{ textAlign: "right", paddingRight: "20px", marginTop: "50px" }}
-      >
-        {" "}
-        {settings.version}{" "}
-      </footer>
+      <footer>v.{settings.version} </footer>
     </div>
   );
 };
