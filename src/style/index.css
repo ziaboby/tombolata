@@ -49,7 +49,7 @@ body {
 
 .card__controller > button:focus-visible,
 .card__tombolone_number > button:focus-visible {
-  outline: 3px dashed black;
+  outline: 3px dashed orangered;
 }
 
 #tombolone_number {
