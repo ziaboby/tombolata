@@ -7,7 +7,8 @@ body {
   background: #fafafa;
   font-family: "Helvetica Neue", arial, sans-serif;
   font-weight: 400;
-  color: #444;
+  color: #ccc;
+  background-color: #111;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
@@ -16,9 +17,8 @@ body {
 .container {
   text-align: center;
   padding: 3vw 0;
-  background-color: #d3d3d3;
   min-width: 25rem;
-  height: 100%;
+  height: max-content;
   box-sizing: border-box;
 }
 
@@ -189,4 +189,10 @@ body {
 
 .card--tombolone .card__number {
   pointer-events: none;
+}
+
+footer {
+  text-align: right;
+  padding-right: 1.25rem;
+  margin-top: 3rem;
 }
