@@ -39,7 +39,8 @@ button {
 }
 
 .card__controller button,
-.card__tombolone_number > button {
+.card__tombolone_number > button,
+.card-cell__cta button {
   font-size: 1rem;
   font-weight: bold;
   background: orange;
@@ -64,6 +65,26 @@ button {
   border: 0;
   font-size: 2rem;
 }
+
+.card-cell__cta {
+  padding: 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background-color: #111;
+}
+
+.card-cell__cta form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-cell__cta input {
+  width: 8rem;
+  margin-right: 1rem;
+} 
 
 .card__list {
   margin: 1rem auto;
@@ -190,6 +211,8 @@ button {
   align-items: center;
 }
 
+.card__number:active,
+.card__number:focus,
 .card__number:focus-visible {
   outline: 5px dashed #ff5722;
 }
