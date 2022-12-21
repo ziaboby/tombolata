@@ -85,12 +85,13 @@ button {
 .card-cell__cta form {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .card-cell__cta input {
-  width: 8rem;
-  margin-right: 1rem;
+  width: 5rem;
+  margin: 0 1rem;
 } 
 
 .card__list {
