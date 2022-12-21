@@ -7,6 +7,7 @@ import TomboloneNumbersGenerator from "./tomboloneNumbersGenerator";
 import Card from "./card";
 import TomboloneCard from "./TomboloneCard";
 import settings from "../../package.json";
+import { GoToNumberCTA } from "./GoToNumberCTA";
 
 const App = () => {
   const [state, dispatch] = useReducer(cards, initialState);
@@ -34,7 +35,9 @@ const App = () => {
             dispatch={dispatch}
             number={state.tomboloneNewNumber}
           />
-        ) : null}
+        ) : (
+          <GoToNumberCTA />
+        )}
         <section className="card__list">
           {state.cards.map((card, index) =>
             isTombolone ? (
