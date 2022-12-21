@@ -67,6 +67,7 @@ button {
 }
 
 .card-cell__cta {
+  margin-top: 0.5rem;
   padding: 1rem 0;
   width: 100%;
   box-sizing: border-box;
