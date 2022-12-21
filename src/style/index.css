@@ -52,13 +52,19 @@ button {
   border-radius: 9px;
 }
 
+.card__number:active,
+.card__number:focus,
+.card__number:focus-visible,
+[role="gridcell"]:active,
 [role="gridcell"]:focus,
 [role="gridcell"]:focus-visible,
+.card-cell__cta button:focus,
+.card-cell__cta button:focus-visible,
 .card__controller > button:focus,
 .card__controller > button:focus-visible,
 .card__tombolone_number > button:focus,
 .card__tombolone_number > button:focus-visible {
-  outline: 3px dashed orangered;
+  outline: 5px dashed orangered;
 }
 
 #tombolone_number {
@@ -210,13 +216,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.card__number:active,
-.card__number:focus,
-.card__number:focus-visible {
-  outline: 5px dashed #ff5722;
-}
+} 
 
 .card__number.card__number--selected {
   color: #0c3073;
