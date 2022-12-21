@@ -17,7 +17,6 @@ body {
 .container {
   text-align: center;
   padding: 3vw 0;
-  min-width: 25rem;
   height: max-content;
   box-sizing: border-box;
 }
@@ -114,6 +113,59 @@ button {
   height: 33%;
 }
 
+.card__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 9);
+  height: auto;
+  text-align: center;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.card__box.card__box--selected {
+  color: #c34f25;
+  background-color: #ff5722;
+}
+
+.card--tombolone .card__box {
+  width: calc(100% / 10);
+}
+
+.card--tombolone .card__box:nth-child(5),
+.card--tombolone .card__box:nth-child(15),
+.card--tombolone .card__box:nth-child(25) {
+  border-right-width: 3px;
+}
+
+.card__number {
+  color: #444;
+  font-size: 1rem;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.card__number.card__number--selected {
+  color: #0c3073;
+  background-color: #ff5722;
+}
+
+.card--tombolone .card__number {
+  pointer-events: none;
+}
+
+footer {
+  text-align: right;
+  padding-right: 1.25rem;
+  margin-top: 3rem;
+}
+
 @media (min-width: 1024px) {
   .card__list {
     display: grid;
@@ -179,57 +231,8 @@ button {
   .card {
     margin: 0;
   }
-}
 
-.card__box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(100% / 9);
-  height: auto;
-  text-align: center;
-  border: 1px solid black;
-  box-sizing: border-box;
-}
-
-.card__box.card__box--selected {
-  color: #c34f25;
-  background-color: #ff5722;
-}
-
-.card--tombolone .card__box {
-  width: calc(100% / 10);
-}
-
-.card--tombolone .card__box:nth-child(5),
-.card--tombolone .card__box:nth-child(15),
-.card--tombolone .card__box:nth-child(25) {
-  border-right-width: 3px;
-}
-
-.card__number {
-  color: #444;
-  font-size: 2rem;
-  text-decoration: none;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} 
-
-.card__number.card__number--selected {
-  color: #0c3073;
-  background-color: #ff5722;
-}
-
-.card--tombolone .card__number {
-  pointer-events: none;
-}
-
-footer {
-  text-align: right;
-  padding-right: 1.25rem;
-  margin-top: 3rem;
+  .card__number {
+    font-size: 2rem;
+  }
 }
