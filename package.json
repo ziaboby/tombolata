@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "cardgenerator",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "MIT",
   "engines" : { 
     "npm" : ">=8.0.0 <9.0.0",
