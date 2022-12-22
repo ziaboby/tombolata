@@ -20,7 +20,6 @@ export default ({ dispatch, number }) => (
     </button>
     <div
       id="tombolone_number"
-      className="card__box"
       role="status"
       aria-live={number ? "assertive" : "off"}
     >
