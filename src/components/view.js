@@ -30,7 +30,7 @@ const View = ({ numbers, dispatch, isSelected, setActiveDescendant }) => {
       role="gridcell"
       aria-selected={num ? isSelected(num) : undefined}
       aria-disabled={!num}
-      className="card__box"
+      className={`card__box${isSelected(num) ? " card__box--selected" : ""}`}
       id={num ? `cell-${num}` : undefined}
     >
       {num ? (
