@@ -35,9 +35,9 @@ const App = () => {
             dispatch={dispatch}
             number={state.tomboloneNewNumber}
           />
-        ) : (
+        ) : state.cards && state.cards.length ? (
           <GoToNumberCTA />
-        )}
+        ) : null}
         <section className="card__list">
           {state.cards.map((card, index) =>
             isTombolone ? (
