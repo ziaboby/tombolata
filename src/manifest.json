@@ -1,7 +1,7 @@
 {
   "name": "CardGenerator",
   "short_name": "CardGenerator",
-  "start_url": "/tombolata/",
+  "start_url": "https://ziaboby.github.io/tombolata/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#111",
