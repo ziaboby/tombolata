@@ -167,7 +167,7 @@ button {
 .card--tombolone .card__box:nth-child(5),
 .card--tombolone .card__box:nth-child(15),
 .card--tombolone .card__box:nth-child(25) {
-  border-right-width: 3px;
+  margin-right: 0.5rem;
 }
 
 .card__number {
