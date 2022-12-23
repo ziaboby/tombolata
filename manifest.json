@@ -1,11 +1,11 @@
 {
   "name": "CardGenerator",
   "short_name": "CardGenerator",
-  "start_url": "/",
+  "start_url": "https://ziaboby.github.io/tombolata/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fff",
-  "theme_color": "#673ab8",
+  "background_color": "#111",
+  "theme_color": "#C14600",
   "icons": [
     {
       "src": "/assets/icons/android-chrome-192x192.png",
