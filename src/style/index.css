@@ -85,6 +85,7 @@ button {
   border: 0;
   font-size: 2rem;
   padding: 0 2rem;
+  width: 3rem;
 }
 
 .card-cell__cta {
