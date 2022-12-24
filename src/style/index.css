@@ -1,0 +1,277 @@
+:root {
+  --primary-color-1: #C14600;
+  --primary-color-2: #CC6328;
+  --primary-color-3: #E39970;
+  --primary-color-4: #FECAAE;
+  --primary-color-5: #FFEDE3;
+  --secondary-color-1: #24443E;
+  --secondary-color-2: #416760;
+  --secondary-color-3: #76A9A0;
+  --secondary-color-4: #BFE3DD;
+  --secondary-color-5: #F1FDFB;
+  --dark-gray-color-1: #111;
+  --light-gray-color-1: #ccc;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Neue", arial, sans-serif;
+  font-weight: 400;
+  color: var(--secondary-color-4);
+  background-color: var(--dark-gray-color-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+.container {
+  text-align: center;
+  padding: 2vw 0;
+  height: max-content;
+  box-sizing: border-box;
+}
+
+.card__controller {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card__tombolone_number {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.card__controller button,
+.card__tombolone_number > button,
+.card-cell__cta button {
+  font-size: 1rem;
+  font-weight: bold;
+  background: var(--primary-color-2);
+  color: var(--dark-gray-color-1);
+  border-radius: 5px;
+  padding: 0.65rem;
+}
+
+.card__tombolone_number > button {
+  border-radius: 9px;
+}
+
+.card__number:active,
+.card__number:focus,
+.card__number:focus-visible,
+[role="gridcell"]:active,
+[role="gridcell"]:focus,
+[role="gridcell"]:focus-visible,
+.card-cell__cta button:focus,
+.card-cell__cta button:focus-visible,
+.card__controller > button:focus,
+.card__controller > button:focus-visible,
+.card__tombolone_number > button:focus,
+.card__tombolone_number > button:focus-visible {
+  outline: 5px dashed var(--secondary-color-1);
+}
+
+#tombolone_number {
+  border: 0;
+  font-size: 2rem;
+  padding: 0 2rem;
+  width: 3rem;
+}
+
+.card-cell__cta {
+  margin-top: 0.5rem;
+  padding: 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background-color: var(--dark-gray-color-1);
+}
+
+.card-cell__cta form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card-cell__cta input {
+  width: 5rem;
+  height: 1.5rem;
+  margin: 0 1rem;
+} 
+
+.card__list {
+  margin: 1rem auto;
+}
+
+.card__container {
+  height: 13rem;
+}
+
+.card {
+  margin: 1rem;
+  padding: 0;
+  height: 100%;
+  background-color: var(--primary-color-3);
+  border-radius: 5px;
+}
+
+.card > .card__row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  height: 33%;
+}
+
+.card__box {
+  width: calc(100% / 11);
+  height: 75%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
+  background-color: var(--primary-color-4);
+  border: 3px solid var(--primary-color-2);
+  border-radius: 5px;
+}
+
+.card__box.card__box--selected {
+  color: var(--secondary-color-5);
+  background-color: var(--primary-color-1);
+}
+
+.card--tombolone {
+  background-color: transparent;
+}
+
+.card--tombolone .card__box {
+  width: calc(100% / 10); 
+  height: 100%;
+  border-radius: 0;
+}
+
+.card--tombolone .card__box:nth-child(5),
+.card--tombolone .card__box:nth-child(15),
+.card--tombolone .card__box:nth-child(25) {
+  margin-right: 0.5rem;
+}
+
+.card__number {
+  color: var(--secondary-color-1);
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 5px;
+  border: none;
+} 
+
+ .card__number.card__number--selected {
+  color: var(--secondary-color-5);
+} 
+
+.card--tombolone .card__number {
+  pointer-events: none;
+}
+
+footer {
+  text-align: right;
+  padding-right: 1.25rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .card__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 20vh);
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+    width: 97%;
+  }
+
+  .card__container {
+    height: auto;
+  }
+
+  .card__container:nth-child(1),
+  .card__container:nth-child(2) {
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .card__container:nth-child(3),
+  .card__container:nth-child(4) {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .card__container:nth-child(5),
+  .card__container:nth-child(6) {
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+
+  .card__container:nth-child(1),
+  .card__container:nth-child(3),
+  .card__container:nth-child(5) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .card__container:nth-child(2),
+  .card__container:nth-child(4),
+  .card__container:nth-child(6) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  .card__container.card__container--tombolone {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  .card__container--tombolone:nth-child(1) {
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .card__container--tombolone:nth-child(2) {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .card__container--tombolone:nth-child(3) {
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+
+  .card {
+    margin: 0;
+  }
+
+  .card__number {
+    font-size: 2rem;
+  }
+}
