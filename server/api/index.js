@@ -1,6 +1,29 @@
 const express = require("express");
 const app = express();
 
+const Pusher = require("pusher");
+
+const {
+  PUSHERJS_APP_ID: appId,
+  PUSHERJS_API_KEY: apiKey,
+  PUSHERJS_API_SECRET: secret,
+  PUSHERJS_CLUSTER: cluster,
+  PUSHERJS_CHANNEL_NAME: channelName,
+  PUSHERJS_EVENT_TOMBOLONE_STATUS: tomboloneStatus,
+  PUSHERJS_EVENT_TOMBOLONE_NEW_NUMBER: tomboloneNewNumber,
+} = process.env;
+
+const pusher =
+  appId && apiKey && secret && cluster
+    ? new Pusher({
+        appId: "1529532",
+        key: "97b4eda7667045e96129",
+        secret: "4ba6453750f627fa485f",
+        cluster: "eu",
+        useTLS: true,
+      })
+    : null;
+
 app.use(express.json());
 
 app.post("/auth", (request, response) => {
@@ -11,12 +34,12 @@ app.post("/auth", (request, response) => {
       output: true,
       value: { code },
       pusherJs: {
-        apiKey: process.env.PUSHERJS_API_KEY,
-        cluster: process.env.PUSHERJS_CLUSTER,
-        channelName: process.env.PUSHERJS_CHANNEL_NAME,
+        apiKey,
+        cluster,
+        channelName,
         events: {
-          tomboloneStatus: process.env.PUSHERJS_EVENT_TOMBOLONE_STATUS,
-          tomboloneNewNumber: process.env.PUSHERJS_EVENT_TOMBOLONE_NEW_NUMBER,
+          tomboloneStatus,
+          tomboloneNewNumber,
         },
       },
     });
@@ -28,20 +51,44 @@ app.post("/auth", (request, response) => {
 app.get("/tombolone/active", (request, response) => {
   const { value } = request.query;
 
-  if (value) {
-    // TODO disable Tombolone button to others
+  if (pusher && value !== undefined) {
+    const convertedToBooleanFigure = value == 0 ? 0 : 1;
+    sendEventMessage(response, {
+      eventName: tomboloneStatus,
+      value: convertedToBooleanFigure,
+    });
   } else {
-    // TODO enable Tombolone button to others
+    response.json({ output: false, value });
   }
-
-  response.json({ output: false, value });
 });
 
 app.get("/tombolone/number", (request, response) => {
   const { value } = request.query;
 
-  // TODO send number to all, then response with {output: true}
-  response.json({ output: false, value });
+  if (pusher && !isNaN(value)) {
+    const newNumber = +value;
+    sendEventMessage(response, {
+      eventName: tomboloneNewNumber,
+      value: newNumber,
+    });
+  } else {
+    response.json({ output: false, value });
+  }
 });
 
 module.exports = app;
+
+function sendEventMessage(response, pusherParams) {
+  const { eventName, value } = pusherParams;
+
+  pusher
+    .trigger(channelName, eventName, {
+      message: value,
+    })
+    .then(() => {
+      response.status(200).json({ output: true, value });
+    })
+    .catch((error) => {
+      console.error(eventName, error);
+    });
+}
