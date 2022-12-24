@@ -16,10 +16,10 @@ const {
 const pusher =
   appId && apiKey && secret && cluster
     ? new Pusher({
-        appId: "1529532",
-        key: "97b4eda7667045e96129",
-        secret: "4ba6453750f627fa485f",
-        cluster: "eu",
+        appId,
+        key: apiKey,
+        secret,
+        cluster,
         useTLS: true,
       })
     : null;
