@@ -18,7 +18,7 @@ const Controllers = ({ dispatch, tomboloneSelected }) => {
 
   const inSession = !!Object.keys(pushedUpdatesState.pusherSettings).length,
     isNewTomboloneButtonEnabled =
-      !inSession || pushedUpdatesState.isTomboloneButtonEnabled;
+      !inSession || !pushedUpdatesState.isTomboloneButtonEnabled;
 
   return (
     <>
@@ -56,7 +56,7 @@ const CardController = ({ dispatch, isNewTomboloneButtonEnabled }) => (
       onClick={() => {
         dispatch({ type: NEW_TOMBOLONE });
       }}
-      disabled={!isNewTomboloneButtonEnabled}
+      // disabled={!isNewTomboloneButtonEnabled}
     >
       New [TOMBOLONE]
     </button>
