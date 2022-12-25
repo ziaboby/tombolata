@@ -79,6 +79,7 @@ const SessionController = ({
       .then((res) => res.json())
       .then((data) => {
         if (data.output) {
+          window.tombolataInSession = true;
           dispatch(SET_PUSHER_API_SETTINGS, { payload: { ...data.pusherJs } });
         } else {
           console.error("session auth - wrong code");

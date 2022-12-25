@@ -49,6 +49,10 @@ const Reducer = (state, action) => {
       };
     }
     case NEW_CARD: {
+      if (state.mode === MODE[1]) {
+        sendUpdateToServer("/api/tombolone/active", 1);
+      }
+
       return {
         ...defaultInitialState,
         mode: MODE[0],
@@ -59,6 +63,8 @@ const Reducer = (state, action) => {
       const cards = Cards.convertOutputGetTomboloneCardsV2ToV1(
         Cards.getTomboloneCardsV2()
       );
+
+      sendUpdateToServer("/api/tombolone/active", 1);
 
       return {
         ...defaultInitialState,
@@ -74,6 +80,9 @@ const Reducer = (state, action) => {
       const index = getRandom(0, state.tomboloneFreeNumbers.length - 1),
         tomboloneFreeNumbers = state.tomboloneFreeNumbers.slice(0),
         tomboloneNewNumber = tomboloneFreeNumbers.splice(index, 1)[0];
+
+      sendUpdateToServer("/api/tombolone/number", tomboloneNewNumber);
+
       return {
         ...state,
         tomboloneNewNumber,
@@ -110,3 +119,26 @@ export default (state, action) => {
 
   return newState;
 };
+
+function sendUpdateToServer(baseUrl, value) {
+  // TODO delay tombolone update till modal response
+  window.tombolataInSession &&
+    window
+      .fetch(`${baseUrl}?${new URLSearchParams({ value })}`, {
+        method: "GET",
+        mode: "cors",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.output) {
+          console.error("send udpate", baseUrl, "wrong value");
+        }
+      })
+      .catch((error) => {
+        console.error("send update", baseUrl, error);
+      });
+}
