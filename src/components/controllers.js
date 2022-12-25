@@ -134,15 +134,16 @@ function pusherJsUpdatesHandler(data, dispatch) {
     });
     const channel = pusher.subscribe(data.pusherJs.channelName);
 
-    dispatch(SET_PUSHER_API_SETTINGS, { payload: { ...data.pusherJs } });
+    dispatch({ type: SET_PUSHER_API_SETTINGS, payload: { ...data.pusherJs } });
 
     channel.bind("tombolone-active-status", ({ message }) => {
-      dispatch(UPDATE_TOMBOLONE_BUTTON_STATUS, {
+      dispatch({
+        type: UPDATE_TOMBOLONE_BUTTON_STATUS,
         payload: message,
       });
     });
     channel.bind("tombolone-new-number", ({ message }) => {
-      dispatch(UPDATE_TOMBOLONE_NUMBER, { payload: message });
+      dispatch({ type: UPDATE_TOMBOLONE_NUMBER, payload: message });
     });
   } else {
     console.error("session auth - wrong code");
