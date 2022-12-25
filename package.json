@@ -8,13 +8,14 @@
     "node" : ">=16.0.0 <17.0.0"
   },
   "scripts": {
-    "build": "preact build --no-prerender",
+    "build": "preact build --no-prerender --config preact.gh.config.js",
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint src",
     "test": "jest",
     "test:watch": "jest --watch",
-    "deploy": "gh-pages -b build -d build -m \"New version deployed\""
+    "deploy": "gh-pages -b build -d build -m \"New version deployed\"",
+    "build:vercel": "preact build --no-prerender --config preact.config.js --dest server/public"
   },
   "eslintConfig": {
     "extends": "preact",
