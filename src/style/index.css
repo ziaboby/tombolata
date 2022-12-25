@@ -1,14 +1,14 @@
 :root {
-  --primary-color-1: #C14600;
-  --primary-color-2: #CC6328;
-  --primary-color-3: #E39970;
-  --primary-color-4: #FECAAE;
-  --primary-color-5: #FFEDE3;
-  --secondary-color-1: #24443E;
+  --primary-color-1: #c14600;
+  --primary-color-2: #cc6328;
+  --primary-color-3: #e39970;
+  --primary-color-4: #fecaae;
+  --primary-color-5: #ffede3;
+  --secondary-color-1: #24443e;
   --secondary-color-2: #416760;
-  --secondary-color-3: #76A9A0;
-  --secondary-color-4: #BFE3DD;
-  --secondary-color-5: #F1FDFB;
+  --secondary-color-3: #76a9a0;
+  --secondary-color-4: #bfe3dd;
+  --secondary-color-5: #f1fdfb;
   --dark-gray-color-1: #111;
   --light-gray-color-1: #ccc;
 }
@@ -28,6 +28,22 @@ body {
   font-size: 16px;
 }
 
+a,
+a:visited {
+  color: var(--primary-color-2);
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: var(--primary-color-1);
+  text-decoration: underline;
+}
+
+input {
+  margin: 0.5rem 1rem;
+}
+
 .container {
   text-align: center;
   padding: 2vw 0;
@@ -41,6 +57,18 @@ body {
   flex-wrap: wrap;
 }
 
+.session-controller {
+  padding: 2rem 0.5rem 0.5rem 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.session-controller--number {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--dark-gray-color-1);
+}
+
 .card__tombolone_number {
   display: flex;
   justify-content: center;
@@ -49,17 +77,17 @@ body {
 
 button {
   cursor: pointer;
-}
-
-.card__controller button,
-.card__tombolone_number > button,
-.card-cell__cta button {
   font-size: 1rem;
   font-weight: bold;
   background: var(--primary-color-2);
   color: var(--dark-gray-color-1);
   border-radius: 5px;
   padding: 0.65rem;
+}
+
+button:disabled {
+  background-color: var(--primary-color-3);
+  cursor: default;
 }
 
 .card__tombolone_number > button {
@@ -72,12 +100,8 @@ button {
 [role="gridcell"]:active,
 [role="gridcell"]:focus,
 [role="gridcell"]:focus-visible,
-.card-cell__cta button:focus,
-.card-cell__cta button:focus-visible,
-.card__controller > button:focus,
-.card__controller > button:focus-visible,
-.card__tombolone_number > button:focus,
-.card__tombolone_number > button:focus-visible {
+button:focus,
+button:focus-visible {
   outline: 5px dashed var(--secondary-color-1);
 }
 
@@ -108,8 +132,7 @@ button {
 .card-cell__cta input {
   width: 5rem;
   height: 1.5rem;
-  margin: 0 1rem;
-} 
+}
 
 .card__list {
   margin: 1rem auto;
@@ -143,7 +166,7 @@ button {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   text-align: center;
   background-color: var(--primary-color-4);
   border: 3px solid var(--primary-color-2);
@@ -155,12 +178,17 @@ button {
   background-color: var(--primary-color-1);
 }
 
+.card__box.card__box--selected button {
+  color: inherit;
+  background-color: inherit;
+}
+
 .card--tombolone {
   background-color: transparent;
 }
 
 .card--tombolone .card__box {
-  width: calc(100% / 10); 
+  width: calc(100% / 10);
   height: 100%;
   border-radius: 0;
 }
@@ -185,11 +213,11 @@ button {
   background-color: transparent;
   border-radius: 5px;
   border: none;
-} 
+}
 
- .card__number.card__number--selected {
+.card__number.card__number--selected {
   color: var(--secondary-color-5);
-} 
+}
 
 .card--tombolone .card__number {
   pointer-events: none;

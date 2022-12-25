@@ -29,7 +29,7 @@ const App = () => {
         <h1>Tombolata</h1>
       </header>
       <main>
-        <Controllers dispatch={dispatch} />
+        <Controllers dispatch={dispatch} tomboloneSelected={isTombolone} />
         {isTombolone ? (
           <TomboloneNumbersGenerator
             dispatch={dispatch}
