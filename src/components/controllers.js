@@ -145,6 +145,10 @@ function pusherJsUpdatesHandler(data, dispatch) {
     channel.bind("tombolone-new-number", ({ message }) => {
       dispatch({ type: UPDATE_TOMBOLONE_NUMBER, payload: message });
     });
+
+    window.addEventListener("beforeunload", () => {
+      pusher.subscribe(data.pusherJs.channelName);
+    });
   } else {
     console.error("session auth - wrong code");
   }
