@@ -8,5 +8,8 @@ export default (config) => {
 */
 
 export default (config) => {
-  if (config.mode == "production") config.output.publicPath = "/tombolata/";
+  if (config.mode == "production") {
+    config.output.publicPath = "/tombolata/";
+    config.devtool = false;
+  }
 };
