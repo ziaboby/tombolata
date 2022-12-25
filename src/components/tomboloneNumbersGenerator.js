@@ -3,7 +3,7 @@ import { NEW_TOMBOLONE_NUMBER } from "../constants/actions";
 
 let refTimeout = null;
 
-export default ({ dispatch, number }) => (
+const TomboloneNumbersGenerator = ({ dispatch, number }) => (
   <section className="card__tombolone_number">
     <button
       onClick={() => {
@@ -27,3 +27,5 @@ export default ({ dispatch, number }) => (
     </div>
   </section>
 );
+
+export default TomboloneNumbersGenerator;
