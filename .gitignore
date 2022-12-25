@@ -6,4 +6,4 @@ size-plugin.json
 /tests/coverage
 .vscode
 /server/public
-/server/.env
+/server/.env*
