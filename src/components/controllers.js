@@ -5,6 +5,8 @@ import {
   NEW_TOMBOLONE,
   RESET,
   SET_PUSHER_API_SETTINGS,
+  UPDATE_TOMBOLONE_BUTTON_STATUS,
+  UPDATE_TOMBOLONE_NUMBER,
 } from "../constants/actions";
 import pushedUpdates, { initialState } from "../reducers/pushedUpdates";
 
@@ -78,12 +80,7 @@ const SessionController = ({
     checkIfUserIsAuthorized(sessionId)
       .then((res) => res.json())
       .then((data) => {
-        if (data.output) {
-          window.tombolataInSession = true;
-          dispatch(SET_PUSHER_API_SETTINGS, { payload: { ...data.pusherJs } });
-        } else {
-          console.error("session auth - wrong code");
-        }
+        pusherJsUpdatesHandler(data, dispatch);
       })
       .catch((error) => {
         console.error("session auth", error);
@@ -129,4 +126,29 @@ function checkIfUserIsAuthorized(sessionId) {
   });
 }
 
+function pusherJsUpdatesHandler(data, dispatch) {
+  if (data.output) {
+    window.tombolataInSession = true;
+    const pusher = new window.Pusher(data.pusherJs.apiKey, {
+      cluster: data.pusherJs.cluster,
+    });
+    const channel = pusher.subscribe(data.pusherJs.channelName);
+
+    dispatch(SET_PUSHER_API_SETTINGS, { payload: { ...data.pusherJs } });
+
+    channel.bind("tombolone-active-status", ({ message }) => {
+      dispatch(UPDATE_TOMBOLONE_BUTTON_STATUS, {
+        payload: message,
+      });
+    });
+    channel.bind("tombolone-new-number", ({ message }) => {
+      dispatch(UPDATE_TOMBOLONE_NUMBER, { payload: message });
+    });
+  } else {
+    console.error("session auth - wrong code");
+  }
+}
+
 export default Controllers;
+
+// TODO split in more files
