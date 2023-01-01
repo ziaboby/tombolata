@@ -213,6 +213,7 @@ button:focus-visible {
   background-color: transparent;
   border-radius: 5px;
   border: none;
+  scroll-margin-top: 8rem;
 }
 
 .card__number.card__number--selected {
