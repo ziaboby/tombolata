@@ -5,3 +5,6 @@ size-plugin.json
 /tests
 /tests/coverage
 .vscode
+/test-results/
+/playwright-report/
+/playwright/.cache/
