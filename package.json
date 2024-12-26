@@ -3,9 +3,9 @@
   "name": "cardgenerator",
   "version": "2.1.1",
   "license": "MIT",
-  "engines" : { 
-    "npm" : ">=8.0.0 <9.0.0",
-    "node" : ">=16.0.0 <17.0.0"
+  "engines": {
+    "npm": "^10",
+    "node": "^20"
   },
   "scripts": {
     "build": "preact build --no-prerender",
@@ -24,14 +24,14 @@
   },
   "devDependencies": {
     "enzyme": "^3.11.0",
-    "enzyme-adapter-preact-pure": "^4.0.1",
-    "eslint": "^8.29.0",
-    "eslint-config-preact": "^1.3.0",
+    "enzyme-adapter-preact-pure": "^4.1.0",
+    "eslint": "^8.57.1",
+    "eslint-config-preact": "^1.5.0",
     "gh-pages": "^4.0.0",
-    "jest": "^27.0.6",
-    "jest-preset-preact": "^4.0.5",
-    "preact-cli": "^3.4.1",
-    "sirv-cli": "2.0.2"
+    "jest": "^27.5.1",
+    "jest-preset-preact": "^4.1.1",
+    "preact-cli": "^3.5.1",
+    "sirv-cli": "3.0.0"
   },
   "dependencies": {
     "preact": "^10.11.3",
