@@ -1,13 +1,13 @@
-import { h } from "preact";
-import { useReducer, useCallback, useEffect } from "preact/hooks";
-import cards, { initialState, MODE } from "../reducers/cards";
-import { RESTORE_STATE } from "../constants/actions";
-import Controllers from "./controllers";
-import TomboloneNumbersGenerator from "./tomboloneNumbersGenerator";
-import Card from "./card";
-import TomboloneCard from "./TomboloneCard";
+import { useCallback, useEffect, useReducer } from "preact/hooks";
 import settings from "../../package.json";
+import { RESTORE_STATE } from "../constants/actions";
+import { lockScreen } from "../lib/WakeLock";
+import cards, { initialState, MODE } from "../reducers/cards";
+import Card from "./card";
+import Controllers from "./controllers";
 import { GoToNumberCTA } from "./GoToNumberCTA";
+import TomboloneCard from "./TomboloneCard";
+import TomboloneNumbersGenerator from "./tomboloneNumbersGenerator";
 
 const App = () => {
   const [state, dispatch] = useReducer(cards, initialState);
@@ -18,6 +18,7 @@ const App = () => {
   const isTombolone = state.mode === MODE[1];
 
   useEffect(() => {
+    lockScreen();
     window.onpopstate = function ({ state = {} }) {
       dispatch({ type: RESTORE_STATE, state });
     };
@@ -31,10 +32,7 @@ const App = () => {
       <main>
         <Controllers dispatch={dispatch} />
         {isTombolone ? (
-          <TomboloneNumbersGenerator
-            dispatch={dispatch}
-            number={state.tomboloneNewNumber}
-          />
+          <TomboloneNumbersGenerator dispatch={dispatch} number={state.tomboloneNewNumber} />
         ) : state.cards && state.cards.length ? (
           <GoToNumberCTA />
         ) : null}
