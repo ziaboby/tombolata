@@ -49,16 +49,16 @@ const Reducer = (state, action) => {
       };
     }
     case NEW_CARD: {
+      const initialCards = Cards.getCards();
+      const cards = initialCards.slice(0, action?.quantity ?? 6);
       return {
         ...defaultInitialState,
         mode: MODE[0],
-        cards: Cards.getCards(),
+        cards,
       };
     }
     case NEW_TOMBOLONE: {
-      const cards = Cards.convertOutputGetTomboloneCardsV2ToV1(
-        Cards.getTomboloneCardsV2()
-      );
+      const cards = Cards.convertOutputGetTomboloneCardsV2ToV1(Cards.getTomboloneCardsV2());
 
       return {
         ...defaultInitialState,

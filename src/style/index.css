@@ -1,14 +1,14 @@
 :root {
-  --primary-color-1: #C14600;
-  --primary-color-2: #CC6328;
-  --primary-color-3: #E39970;
-  --primary-color-4: #FECAAE;
-  --primary-color-5: #FFEDE3;
-  --secondary-color-1: #24443E;
+  --primary-color-1: #c14600;
+  --primary-color-2: #cc6328;
+  --primary-color-3: #e39970;
+  --primary-color-4: #fecaae;
+  --primary-color-5: #ffede3;
+  --secondary-color-1: #24443e;
   --secondary-color-2: #416760;
-  --secondary-color-3: #76A9A0;
-  --secondary-color-4: #BFE3DD;
-  --secondary-color-5: #F1FDFB;
+  --secondary-color-3: #76a9a0;
+  --secondary-color-4: #bfe3dd;
+  --secondary-color-5: #f1fdfb;
   --dark-gray-color-1: #111;
   --light-gray-color-1: #ccc;
 }
@@ -66,6 +66,10 @@ button {
   border-radius: 9px;
 }
 
+.card__controller label > input {
+  margin: 0 1.2rem 0 0.7rem;
+}
+
 .card__number:active,
 .card__number:focus,
 .card__number:focus-visible,
@@ -109,7 +113,7 @@ button {
   width: 5rem;
   height: 1.5rem;
   margin: 0 1rem;
-} 
+}
 
 .card__list {
   margin: 1rem auto;
@@ -143,7 +147,7 @@ button {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   text-align: center;
   background-color: var(--primary-color-4);
   border: 3px solid var(--primary-color-2);
@@ -160,7 +164,7 @@ button {
 }
 
 .card--tombolone .card__box {
-  width: calc(100% / 10); 
+  width: calc(100% / 10);
   height: 100%;
   border-radius: 0;
 }
@@ -185,11 +189,11 @@ button {
   background-color: transparent;
   border-radius: 5px;
   border: none;
-} 
+}
 
- .card__number.card__number--selected {
+.card__number.card__number--selected {
   color: var(--secondary-color-5);
-} 
+}
 
 .card--tombolone .card__number {
   pointer-events: none;
