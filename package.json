@@ -1,11 +1,11 @@
 {
   "private": true,
   "name": "cardgenerator",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "license": "MIT",
   "engines": {
-    "npm": "^10",
-    "node": "^20"
+    "pnpm": "9.9.0",
+    "node": ">=16.0.0 <17.0.0"
   },
   "scripts": {
     "build": "preact build --no-prerender",
