@@ -14,15 +14,24 @@ export default function Controllers({ dispatch }) {
       </button>
       <fieldset>
         <label>
-          Number of cards
-          <input defaultValue={6} min={1} max={6} ref={nCardsRef} type="number" />
+          Number of cards (1-6)
+          <input
+            defaultValue="6"
+            inputmode="numeric"
+            min="1"
+            max="6"
+            step="1"
+            ref={nCardsRef}
+            type="number"
+          />
         </label>
         <button
           onClick={() => {
-            dispatch({
-              type: NEW_CARD,
-              quantity: !isNaN(nCardsRef.current.value) ? +nCardsRef.current.value : 6,
-            });
+            nCardsRef.current.value <= 6 &&
+              dispatch({
+                type: NEW_CARD,
+                quantity: !isNaN(nCardsRef.current.value) ? +nCardsRef.current.value : 6,
+              });
           }}
         >
           New Cards

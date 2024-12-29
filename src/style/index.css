@@ -70,6 +70,10 @@ button {
   margin: 0 1.2rem 0 0.7rem;
 }
 
+.card__controller label > input:invalid {
+  border: 3px dotted red;
+}
+
 .card__number:active,
 .card__number:focus,
 .card__number:focus-visible,
